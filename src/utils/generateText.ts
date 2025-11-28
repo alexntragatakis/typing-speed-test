@@ -9,7 +9,7 @@ const generateText = ({ wordCount }: textOptions) => {
   for (let i = 0; i < wordCount; i++) {
     wordList.push(words[Math.floor(words.length * Math.random())]);
   }
-  return wordList;
+  return wordList.join(" ");
 };
 
 export default generateText;
