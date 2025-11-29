@@ -1,3 +1,14 @@
-.text-box {
+.black-back-text {
   font-size: 30px;
+  color: rgb(62, 62, 62);
+}
+
+.correctly-typed-text {
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+}
+
+.incorrectly-typed-text {
+  font-size: 30px;
+  color: rgb(255, 0, 0);
 }

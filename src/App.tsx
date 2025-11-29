@@ -7,7 +7,7 @@ function App() {
     <>
       <div className="centered-page">
         <div className="textbox-wrap">
-          <TextBox className="text-box" wordCount={20}></TextBox>
+          <TextBox className="black-back-text" wordCount={20}></TextBox>
         </div>
       </div>
     </>
