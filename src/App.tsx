@@ -7,7 +7,12 @@ function App() {
     <>
       <div className="centered-page">
         <div className="textbox-wrap">
-          <TextBox className="black-back-text" wordCount={20}></TextBox>
+          <TextBox
+            backClassName="black-back-text"
+            frontCorrClassName="correctly-typed-text"
+            frontIncClassName="incorrectly-typed-text"
+            wordCount={20}
+          ></TextBox>
         </div>
       </div>
     </>
