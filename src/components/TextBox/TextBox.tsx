@@ -29,8 +29,26 @@ const TextBox = ({
 
   return (
     <div className="text-wrapper" tabIndex={0} onKeyDown={handleKeyDown}>
-      <div className={frontCorrClassName}>{typed}</div>
-      <div className={backClassName}>{wordList}</div>
+      {typed.split("").map((char, index) => (
+        <span
+          key={index}
+          className={
+            typed[index] === wordList[index]
+              ? frontCorrClassName
+              : frontIncClassName
+          }
+        >
+          {char}
+        </span>
+      ))}
+      {wordList.split("").map(
+        (char, index) =>
+          index >= typed.length && (
+            <span key={index} className={backClassName}>
+              {char}
+            </span>
+          )
+      )}
     </div>
   );
 };

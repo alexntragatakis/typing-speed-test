@@ -10,17 +10,9 @@
 .correctly-typed-text {
   font-size: 30px;
   color: rgb(0, 0, 0);
-
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .incorrectly-typed-text {
   font-size: 30px;
   color: rgb(255, 0, 0);
-
-  position: absolute;
-  top: 0;
-  left: 0;
 }
