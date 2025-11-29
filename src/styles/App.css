@@ -1,0 +1,22 @@
+body {
+  background-color: var(--pagebg);
+}
+
+.centered-page {
+  display: flex;
+
+  width: 100vw;
+  height: 100vh;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.textbox-wrap {
+  width: 800px;
+  height: 250px;
+  background: var(--boxbg);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
