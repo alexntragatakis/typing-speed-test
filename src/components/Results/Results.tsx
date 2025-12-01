@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Results = ({ WPM }: Props) => {
-  return <div>{WPM}</div>;
+  return <div>{WPM} WPM</div>;
 };
 
 export default Results;

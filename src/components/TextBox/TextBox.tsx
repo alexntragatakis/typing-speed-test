@@ -7,6 +7,7 @@ interface Props {
   backClassName: string;
   frontCorrClassName: string;
   frontIncClassName: string;
+  onFinished: () => void;
 }
 
 const TextBox = ({
@@ -14,6 +15,7 @@ const TextBox = ({
   backClassName,
   frontCorrClassName,
   frontIncClassName,
+  onFinished,
 }: Props) => {
   const [typed, setTyped] = useState("");
   const [wordList] = useState(generateText({ wordCount }));
@@ -27,8 +29,12 @@ const TextBox = ({
     }
   };
 
+  if (typed.length >= wordList.length) {
+    onFinished();
+  }
+
   return (
-    <div className="text-wrapper" tabIndex={0} onKeyDown={handleKeyDown}>
+    <div className="textbox-wrap" tabIndex={0} onKeyDown={handleKeyDown}>
       {typed.split("").map((char, index) => (
         <span
           key={index}
