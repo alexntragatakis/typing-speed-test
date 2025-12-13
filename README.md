@@ -1,3 +1,5 @@
-# typing-test
+# Typing Speed Test
+This is a front-end project built using React, Typescript, and Vite.
 
-This is a personal project to learn more about web development using typescript and react.
+## Live Demo
+Check out the live verison here: [https://alexntragatakis.github.io/typing-test/](https://alexntragatakis.github.io/typing-test/)
