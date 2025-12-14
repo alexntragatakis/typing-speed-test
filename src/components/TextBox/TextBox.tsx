@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import generateText from "../../utils/generateText.ts";
 import "./TextBox.css";
 
@@ -20,6 +20,10 @@ const TextBox = ({
   const [typed, setTyped] = useState("");
   const [wordList] = useState(generateText({ wordCount }));
 
+  const [started, setStarted] = useState(false);
+  const [time, setTime] = useState(0);
+  const timerRef = useRef<number | null>(null);
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key.length === 1) {
       setTyped((typed) => typed + e.key);
@@ -29,11 +33,38 @@ const TextBox = ({
     }
   };
 
-  if (typed.length >= wordList.length) {
-    onFinished();
+
+
+  if (!started && typed.length > 0) {
+    setStarted(true);
   }
 
+  useEffect(() => {
+    if ( started && timerRef.current === null ) {
+      timerRef.current = window.setInterval(() => {
+        setTime((prev) => prev + 1);
+      }, 1000);
+    }
+
+    return () => {
+      if (timerRef.current !== null) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [started]);
+
+  useEffect(() => {
+    if (typed.length>=wordList.length) {
+      if (timerRef.current != null) {
+        clearInterval(timerRef.current);
+      }
+      onFinished();
+    }
+  }, [typed, onFinished])
+
   return (
+    <div>Time: {time}s
     <div className="textbox-wrap" tabIndex={0} onKeyDown={handleKeyDown}>
       {typed.split("").map((char, index) => (
         <span
@@ -55,6 +86,7 @@ const TextBox = ({
             </span>
           )
       )}
+    </div>
     </div>
   );
 };
