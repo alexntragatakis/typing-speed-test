@@ -23,6 +23,7 @@ const TextBox = ({
   const [started, setStarted] = useState(false);
   const [time, setTime] = useState(0);
   const timerRef = useRef<number | null>(null);
+  const startTimeRef = useRef<number | null>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key.length === 1) {
@@ -37,6 +38,9 @@ const TextBox = ({
 
   if (!started && typed.length > 0) {
     setStarted(true);
+    if (startTimeRef.current === null) {
+      startTimeRef.current = Date.now();
+    }
   }
 
   useEffect(() => {
@@ -56,8 +60,12 @@ const TextBox = ({
 
   useEffect(() => {
     if (typed.length>=wordList.length) {
-      if (timerRef.current != null) {
+      if (timerRef.current !==  null) {
         clearInterval(timerRef.current);
+      }
+      if (startTimeRef.current !== null) {
+        const elapsedTime = Date.now() - startTimeRef.current;
+        startTimeRef.current = null;
       }
       onFinished();
     }
