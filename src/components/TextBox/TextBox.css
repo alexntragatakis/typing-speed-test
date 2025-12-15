@@ -6,19 +6,26 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   outline: none;
   padding: 16px;
+  font-size: 30px;
 }
 
 .black-back-text {
-  font-size: 30px;
   color: rgb(62, 62, 62);
 }
 
 .correctly-typed-text {
-  font-size: 30px;
   color: rgb(0, 0, 0);
 }
 
 .incorrectly-typed-text {
-  font-size: 30px;
   color: rgb(255, 0, 0);
+}
+
+.caret {
+  position: absolute;
+  height: 1.2em;
+  width: 0.1em;
+  border-radius: 0.05em;
+
+  background-color: rgb(90,90,90);
 }

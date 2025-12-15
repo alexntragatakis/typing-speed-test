@@ -66,7 +66,7 @@ const TextBox = ({
   return (
     <div>Time: {time}s
     <div className="textbox-wrap" tabIndex={0} onKeyDown={handleKeyDown}>
-      {typed.split("").map((char, index) => (
+      {typed.split("").map((_, index) => (
         <span
           key={index}
           className={
@@ -75,9 +75,10 @@ const TextBox = ({
               : frontIncClassName
           }
         >
-          {char}
+          {wordList[index]}
         </span>
       ))}
+      <span className='caret' />
       {wordList.split("").map(
         (char, index) =>
           index >= typed.length && (
