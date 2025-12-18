@@ -3,9 +3,17 @@ import "./styles/variables.css";
 import "./styles/App.css";
 import TextBox from "./components/TextBox/TextBox";
 import Results from "./components/Results/Results";
+import { calculateWPM, calculateAccuracy } from "./utils/calculateStats";
+import type { rawResult } from "./utils/calculateStats";
 
 function App() {
   const [showResults, setDisplayResults] = useState(false);
+  const [rawResults, setRawResults] = useState<rawResult | null>(null);
+
+  const handleFinished = (raw: rawResult) => {
+    setRawResults(raw);
+    setDisplayResults(true);
+  }
 
   return (
     <>
@@ -16,10 +24,10 @@ function App() {
             frontCorrClassName="correctly-typed-text"
             frontIncClassName="incorrectly-typed-text"
             wordCount={20}
-            onFinished={() => setDisplayResults(true)}
+            onFinished={handleFinished}
           ></TextBox>
         ) : (
-          <Results WPM={100}></Results>
+          <Results WPM={calculateWPM(rawResults!)} acc={calculateAccuracy(rawResults!)}></Results>
         )}
       </div>
     </>

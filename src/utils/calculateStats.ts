@@ -1,17 +1,23 @@
-export function calculateWPM (time: number , wordList: string ) {
-    const words = wordList.length / 5;
-    const minutes = time / 60000;
+export interface rawResult {
+  time: number;
+  typed: string;
+  wordList: string;
+}
+
+export function calculateWPM (result: rawResult) {
+    const words = result.wordList.length / 5;
+    const minutes = result.time / 60000;
     return Math.round(words / minutes);
 }
 
-export function calculateAccuracy (wordList: string, typed: string) {
+export function calculateAccuracy (result: rawResult) {
     let correct = 0;
 
-    for (let i=0; i<wordList.length; i++) {
-        if (wordList[i] === typed[i]) {
+    for (let i=0; i<result.wordList.length; i++) {
+        if (result.wordList[i] === result.typed[i]) {
             correct++;
         }
     }
 
-    return (Math.round(correct / wordList.length)) * 100;
+    return (Math.round(correct / result.wordList.length)) * 100;
 }

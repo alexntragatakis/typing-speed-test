@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import generateText from "../../utils/generateText.ts";
+import type { rawResult } from "../../utils/calculateStats.ts"
 import "./TextBox.css";
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
   backClassName: string;
   frontCorrClassName: string;
   frontIncClassName: string;
-  onFinished: () => void;
+  onFinished: (data: rawResult) => void;
 }
 
 const TextBox = ({
@@ -66,8 +67,13 @@ const TextBox = ({
       if (startTimeRef.current !== null) {
         const elapsedTime = Date.now() - startTimeRef.current;
         startTimeRef.current = null;
+        const result: rawResult = {
+          time: elapsedTime,
+          typed: typed,
+          wordList: wordList
+        }
+        onFinished(result);
       }
-      onFinished();
     }
   }, [typed, onFinished])
 
