@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import generateText from "../../utils/generateText.ts";
-import type { rawResult } from "../../utils/calculateStats.ts"
+import type { rawResult } from "../../utils/calculateStats.ts";
 import "./TextBox.css";
 
 interface Props {
@@ -35,8 +35,6 @@ const TextBox = ({
     }
   };
 
-
-
   if (!started && typed.length > 0) {
     setStarted(true);
     if (startTimeRef.current === null) {
@@ -45,7 +43,7 @@ const TextBox = ({
   }
 
   useEffect(() => {
-    if ( started && timerRef.current === null ) {
+    if (started && timerRef.current === null) {
       timerRef.current = window.setInterval(() => {
         setTime((prev) => prev + 1);
       }, 1000);
@@ -60,8 +58,8 @@ const TextBox = ({
   }, [started]);
 
   useEffect(() => {
-    if (typed.length>=wordList.length) {
-      if (timerRef.current !==  null) {
+    if (typed.length >= wordList.length) {
+      if (timerRef.current !== null) {
         clearInterval(timerRef.current);
       }
       if (startTimeRef.current !== null) {
@@ -70,38 +68,39 @@ const TextBox = ({
         const result: rawResult = {
           time: elapsedTime,
           typed: typed,
-          wordList: wordList
-        }
+          wordList: wordList,
+        };
         onFinished(result);
       }
     }
-  }, [typed, onFinished])
+  }, [typed, onFinished]);
 
   return (
-    <div>Time: {time}s
-    <div className="textbox-wrap" tabIndex={0} onKeyDown={handleKeyDown}>
-      {typed.split("").map((_, index) => (
-        <span
-          key={index}
-          className={
-            typed[index] === wordList[index]
-              ? frontCorrClassName
-              : frontIncClassName
-          }
-        >
-          {wordList[index]}
-        </span>
-      ))}
-      <span className='caret' />
-      {wordList.split("").map(
-        (char, index) =>
-          index >= typed.length && (
-            <span key={index} className={backClassName}>
-              {char}
-            </span>
-          )
-      )}
-    </div>
+    <div>
+      Time: {time}s
+      <div className="textbox-wrap" tabIndex={0} onKeyDown={handleKeyDown}>
+        {typed.split("").map((_, index) => (
+          <span
+            key={index}
+            className={
+              typed[index] === wordList[index]
+                ? frontCorrClassName
+                : frontIncClassName
+            }
+          >
+            {wordList[index]}
+          </span>
+        ))}
+        <span className="caret" />
+        {wordList.split("").map(
+          (char, index) =>
+            index >= typed.length && (
+              <span key={index} className={backClassName}>
+                {char}
+              </span>
+            )
+        )}
+      </div>
     </div>
   );
 };

@@ -6,7 +6,11 @@ interface Props {
 }
 
 const Results = ({ WPM, acc }: Props) => {
-  return <div>{WPM} WPM {acc}% Accuracy</div>;
+  return (
+    <div>
+      {WPM} WPM {acc}% Accuracy
+    </div>
+  );
 };
 
 export default Results;

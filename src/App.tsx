@@ -13,7 +13,7 @@ function App() {
   const handleFinished = (raw: rawResult) => {
     setRawResults(raw);
     setDisplayResults(true);
-  }
+  };
 
   return (
     <>
@@ -27,7 +27,10 @@ function App() {
             onFinished={handleFinished}
           ></TextBox>
         ) : (
-          <Results WPM={calculateWPM(rawResults!)} acc={calculateAccuracy(rawResults!)}></Results>
+          <Results
+            WPM={calculateWPM(rawResults!)}
+            acc={calculateAccuracy(rawResults!)}
+          ></Results>
         )}
       </div>
     </>
