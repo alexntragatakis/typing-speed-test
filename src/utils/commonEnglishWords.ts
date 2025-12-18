@@ -175,7 +175,6 @@ const words: string[] = [
   "concern",
   "condition",
   "conference",
-  "Congress",
   "consider",
   "consumer",
   "contain",
