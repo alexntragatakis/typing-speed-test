@@ -16,7 +16,7 @@ export function calculateResults(raw: rawResult) {
       correct++;
     }
   }
-  const accuracy = Math.round(correct / raw.wordList.length) * 100;
+  const accuracy = Math.round((correct / raw.wordList.length) * 100);
 
   const words = raw.wordList.length / 5;
   const minutes = raw.time / 60000;
