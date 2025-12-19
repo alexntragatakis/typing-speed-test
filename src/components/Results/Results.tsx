@@ -1,14 +1,14 @@
 import "./Results.css";
+import type { processedResult } from "../../utils/calculateStats";
 
 interface Props {
-  WPM: number;
-  acc: number;
+  result: processedResult;
 }
 
-const Results = ({ WPM, acc }: Props) => {
+const Results = ({ result }: Props) => {
   return (
     <div>
-      {WPM} WPM {acc}% Accuracy
+      {result.WPM} WPM {result.accuracy}% Accuracy
     </div>
   );
 };

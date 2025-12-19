@@ -3,7 +3,7 @@ import "./styles/variables.css";
 import "./styles/App.css";
 import TextBox from "./components/TextBox/TextBox";
 import Results from "./components/Results/Results";
-import { calculateWPM, calculateAccuracy } from "./utils/calculateStats";
+import { calculateResults } from "./utils/calculateStats";
 import type { rawResult } from "./utils/calculateStats";
 
 function App() {
@@ -27,10 +27,7 @@ function App() {
             onFinished={handleFinished}
           ></TextBox>
         ) : (
-          <Results
-            WPM={calculateWPM(rawResults!)}
-            acc={calculateAccuracy(rawResults!)}
-          ></Results>
+          <Results result={calculateResults(rawResults!)}></Results>
         )}
       </div>
     </>
