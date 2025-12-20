@@ -15,6 +15,11 @@ function App() {
     setDisplayResults(true);
   };
 
+  const handleRestart = () => {
+    setRawResults(null);
+    setDisplayResults(false);
+  };
+
   return (
     <>
       <div className="centered-page">
@@ -27,7 +32,10 @@ function App() {
             onFinished={handleFinished}
           ></TextBox>
         ) : (
-          <Results result={calculateResults(rawResults!)}></Results>
+          <Results
+            result={calculateResults(rawResults!)}
+            onRestart={handleRestart}
+          ></Results>
         )}
       </div>
     </>

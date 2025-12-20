@@ -1,0 +1,14 @@
+.results-page-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.results {
+  display: flex;
+}
+
+.buttons {
+  display: flex;
+}
