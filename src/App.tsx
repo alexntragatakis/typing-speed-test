@@ -3,6 +3,7 @@ import "./styles/variables.css";
 import "./styles/App.css";
 import TextBox from "./components/TextBox/TextBox";
 import Results from "./components/Results/Results";
+import ControlBar from "./components/ControlBar/ControlBar";
 import { calculateResults } from "./utils/calculateStats";
 import type { rawResult } from "./utils/calculateStats";
 
@@ -21,8 +22,8 @@ function App() {
   };
 
   return (
-    <>
-      <div className="centered-page">
+    <div className="centered-page">
+      <div className="content">
         {!showResults ? (
           <TextBox
             backClassName="black-back-text"
@@ -32,13 +33,13 @@ function App() {
             onFinished={handleFinished}
           ></TextBox>
         ) : (
-          <Results
-            result={calculateResults(rawResults!)}
-            onRestart={handleRestart}
-          ></Results>
+          <Results result={calculateResults(rawResults!)}></Results>
         )}
       </div>
-    </>
+      <div className="bottom-row">
+        <ControlBar onRestart={handleRestart} />
+      </div>
+    </div>
   );
 }
 

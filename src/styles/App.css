@@ -5,9 +5,18 @@ body {
 .centered-page {
   display: flex;
 
-  width: 100vw;
-  height: 100vh;
-
   justify-content: center;
   align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  gap: 16px;
 }
+
+.content {
+}
+
+.bottom-row {
+}
+
+/* a */
