@@ -8,6 +8,7 @@ interface Props {
   backClassName: string;
   frontCorrClassName: string;
   frontIncClassName: string;
+  restartSignal: number;
   onFinished: (data: rawResult) => void;
 }
 
@@ -16,10 +17,11 @@ const TextBox = ({
   backClassName,
   frontCorrClassName,
   frontIncClassName,
+  restartSignal,
   onFinished,
 }: Props) => {
   const [typed, setTyped] = useState("");
-  const [wordList] = useState(generateText({ wordCount }));
+  const [wordList, setWordList] = useState(generateText({ wordCount }));
 
   const [started, setStarted] = useState(false);
   const [time, setTime] = useState(0);
@@ -74,6 +76,16 @@ const TextBox = ({
       }
     }
   }, [typed, onFinished]);
+
+  useEffect(() => {
+    setStarted(false);
+    setWordList(generateText({ wordCount }));
+    setTyped("");
+    if (timerRef.current !== null) {
+      clearInterval(timerRef.current);
+      setTime(0);
+    }
+  }, [restartSignal]);
 
   return (
     <div>

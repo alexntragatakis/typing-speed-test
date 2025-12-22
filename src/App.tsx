@@ -8,6 +8,8 @@ import { calculateResults } from "./utils/calculateStats";
 import type { rawResult } from "./utils/calculateStats";
 
 function App() {
+  const [restartSignal, setRestartSignal] = useState(0);
+
   const [showResults, setDisplayResults] = useState(false);
   const [rawResults, setRawResults] = useState<rawResult | null>(null);
 
@@ -19,6 +21,7 @@ function App() {
   const handleRestart = () => {
     setRawResults(null);
     setDisplayResults(false);
+    setRestartSignal((n) => n + 1);
   };
 
   return (
@@ -30,6 +33,7 @@ function App() {
             frontCorrClassName="correctly-typed-text"
             frontIncClassName="incorrectly-typed-text"
             wordCount={20}
+            restartSignal={restartSignal}
             onFinished={handleFinished}
           ></TextBox>
         ) : (
