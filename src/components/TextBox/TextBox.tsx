@@ -85,6 +85,9 @@ const TextBox = ({
       clearInterval(timerRef.current);
       setTime(0);
     }
+    if (startTimeRef.current !== null) {
+      startTimeRef.current = null;
+    }
   }, [restartSignal]);
 
   return (
