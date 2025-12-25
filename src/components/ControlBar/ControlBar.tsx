@@ -1,4 +1,5 @@
 import "./ControlBar.css";
+import { Link } from "react-router-dom";
 
 interface Props {
   onRestart: () => void;
@@ -10,6 +11,9 @@ const ControlBar = ({ onRestart }: Props) => {
       <button className="" onClick={onRestart}>
         Restart
       </button>
+      <Link to="/typing-test/options">
+        <button className="">Options</button>
+      </Link>
     </div>
   );
 };

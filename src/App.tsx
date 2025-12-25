@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./styles/variables.css";
 import "./styles/App.css";
 import TextBox from "./components/TextBox/TextBox";
 import Results from "./components/Results/Results";
