@@ -8,7 +8,21 @@ interface Props {
 }
 
 const Options = ({ onSave }: Props) => {
-  const handleSave = () => {};
+  const [wordCount, setWordCount] = useState<number>(25);
+  const [style, setStyle] = useState<testOptions["style"]>({
+    backGroundColor: "--default-pagebg",
+    textBoxColor: "--default-boxbg",
+    backColor: "--default-black-back-text",
+    frontCorrColor: "--default-correctly-typed-text",
+    frontIncColor: "--default-incorrectly-typed-text",
+  });
+
+  const handleSave = () => {
+    onSave({
+      wordCount: wordCount,
+      style: style,
+    });
+  };
 
   return (
     <>
@@ -25,7 +39,8 @@ const Options = ({ onSave }: Props) => {
           name="btnradio"
           id="btnradio1"
           autoComplete="off"
-          defaultChecked
+          checked={wordCount === 10}
+          onClick={() => setWordCount(10)}
         />
         <label className="btn btn-outline-secondary" htmlFor="btnradio1">
           10
@@ -36,6 +51,8 @@ const Options = ({ onSave }: Props) => {
           name="btnradio"
           id="btnradio2"
           autoComplete="off"
+          checked={wordCount === 25}
+          onClick={() => setWordCount(25)}
         />
         <label className="btn btn-outline-secondary" htmlFor="btnradio2">
           25
@@ -46,6 +63,8 @@ const Options = ({ onSave }: Props) => {
           name="btnradio"
           id="btnradio3"
           autoComplete="off"
+          checked={wordCount === 50}
+          onClick={() => setWordCount(50)}
         />
         <label className="btn btn-outline-secondary" htmlFor="btnradio3">
           50

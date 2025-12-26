@@ -4,9 +4,9 @@ export interface testOptions {
 }
 
 export interface style {
-  backGroundClassName: string;
-  textBoxClassName: string;
-  backClassName: string;
-  frontCorrClassName: string;
-  frontIncClassName: string;
+  backGroundColor: string;
+  textBoxColor: string;
+  backColor: string;
+  frontCorrColor: string;
+  frontIncColor: string;
 }
