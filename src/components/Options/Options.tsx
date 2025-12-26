@@ -1,7 +1,15 @@
 import "./Options.css";
+import { Link } from "react-router-dom";
 
 const Options = () => {
-  return <div>This is the Options page</div>;
+  return (
+    <>
+      <h1>This is the Options page</h1>
+      <Link to="/typing-test">
+        <button>Back</button>
+      </Link>
+    </>
+  );
 };
 
 export default Options;
