@@ -1,7 +1,7 @@
 .textbox-wrap {
   width: 800px;
   height: 250px;
-  background: var(--boxbg);
+  background: var(--default-boxbg);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   outline: none;
@@ -10,15 +10,15 @@
 }
 
 .black-back-text {
-  color: rgb(62, 62, 62);
+  color: var(--default-black-back-text);
 }
 
 .correctly-typed-text {
-  color: rgb(0, 0, 0);
+  color: var(--default-correctly-typed-text);
 }
 
 .incorrectly-typed-text {
-  color: rgb(255, 0, 0);
+  color: var(--default-incorrectly-typed-text);
 }
 
 .caret {

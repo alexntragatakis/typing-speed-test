@@ -1,4 +1,8 @@
 :root {
-  --pagebg: rgb(190, 190, 190);
-  --boxbg: rgb(150, 150, 150);
+  --default-pagebg: rgb(190, 190, 190);
+  --default-boxbg: rgb(150, 150, 150);
+
+  --default-black-back-text: rgb(62, 62, 62);
+  --default-correctly-typed-text: rgb(0, 0, 0);
+  --default-incorrectly-typed-text: rgb(255, 0, 0);
 }
