@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://alexntragatakis.github.io/typing-test",
+  "homepage": "https://alexntragatakis.github.io/typing-speed-test",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

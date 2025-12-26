@@ -7,8 +7,8 @@ import App from "./App.tsx";
 import Options from "./components/Options/Options.tsx";
 
 const router = createBrowserRouter([
-  { path: "/typing-test", element: <App /> },
-  { path: "/typing-test/options", element: <Options /> },
+  { path: "/typing-speed-test/", element: <App /> },
+  { path: "/typing-speed-test/options", element: <Options /> },
 ]);
 
 createRoot(document.getElementById("root")!).render(

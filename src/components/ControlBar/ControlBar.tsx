@@ -11,7 +11,7 @@ const ControlBar = ({ onRestart }: Props) => {
       <button className="" onClick={onRestart}>
         Restart
       </button>
-      <Link to="/typing-test/options">
+      <Link to="/typing-speed-test/options">
         <button className="">Options</button>
       </Link>
     </div>

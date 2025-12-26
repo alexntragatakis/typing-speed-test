@@ -5,7 +5,7 @@ const Options = () => {
   return (
     <>
       <h1>This is the Options page</h1>
-      <Link to="/typing-test">
+      <Link to="/typing-speed-test/">
         <button>Back</button>
       </Link>
     </>
