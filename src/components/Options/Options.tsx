@@ -1,7 +1,7 @@
 import "./Options.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import type { testOptions } from "../../utils/testOptions";
+import type { testOptions } from "../../types/testOptions";
 
 interface Props {
   onSave: (data: testOptions) => void;

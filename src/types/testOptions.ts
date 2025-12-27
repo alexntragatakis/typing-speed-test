@@ -10,3 +10,5 @@ export interface style {
   frontCorrColor: string;
   frontIncColor: string;
 }
+
+// TODO: Create a "theme" type for background and textbox color. Then pass just text color styles to TextBox.

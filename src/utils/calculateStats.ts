@@ -1,13 +1,4 @@
-export interface rawResult {
-  time: number;
-  typed: string;
-  wordList: string;
-}
-
-export interface processedResult {
-  WPM: number;
-  accuracy: number;
-}
+import type { rawResult, processedResult } from "../types/resultTypes.ts";
 
 export function calculateResults(raw: rawResult) {
   let correct = 0;

@@ -1,8 +1,8 @@
 import "./TextBox.css";
 import { useState, useEffect, useRef } from "react";
 import generateText from "../../utils/generateText.ts";
-import type { rawResult } from "../../utils/calculateStats.ts";
-import type { testOptions } from "../../utils/testOptions.ts";
+import type { rawResult } from "../../types/resultTypes.ts";
+import type { testOptions } from "../../types/testOptions.ts";
 
 interface Props {
   testOptions: testOptions;

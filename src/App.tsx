@@ -4,7 +4,7 @@ import TextBox from "./components/TextBox/TextBox";
 import Results from "./components/Results/Results";
 import ControlBar from "./components/ControlBar/ControlBar";
 import { calculateResults } from "./utils/calculateStats";
-import type { rawResult } from "./utils/calculateStats";
+import type { rawResult } from "./types/resultTypes.ts";
 
 function App() {
   const [restartSignal, setRestartSignal] = useState(0);
