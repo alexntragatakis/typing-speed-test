@@ -28,10 +28,16 @@ function App() {
       <div className="content">
         {!showResults ? (
           <TextBox
-            backClassName="black-back-text"
-            frontCorrClassName="correctly-typed-text"
-            frontIncClassName="incorrectly-typed-text"
-            wordCount={20}
+            testOptions={{
+              wordCount: 25,
+              style: {
+                backGroundColor: "--default-pagebg",
+                textBoxColor: "--default-boxbg",
+                backColor: "--default-black-back-text",
+                frontCorrColor: "--default-correctly-typed-text",
+                frontIncColor: "--default-incorrectly-typed-text",
+              },
+            }}
             restartSignal={restartSignal}
             onFinished={handleFinished}
           ></TextBox>

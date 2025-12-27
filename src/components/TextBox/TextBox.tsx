@@ -1,27 +1,20 @@
+import "./TextBox.css";
 import { useState, useEffect, useRef } from "react";
 import generateText from "../../utils/generateText.ts";
 import type { rawResult } from "../../utils/calculateStats.ts";
-import "./TextBox.css";
+import type { testOptions } from "../../utils/testOptions.ts";
 
 interface Props {
-  wordCount: number;
-  backClassName: string;
-  frontCorrClassName: string;
-  frontIncClassName: string;
+  testOptions: testOptions;
   restartSignal: number;
   onFinished: (data: rawResult) => void;
 }
 
-const TextBox = ({
-  wordCount,
-  backClassName,
-  frontCorrClassName,
-  frontIncClassName,
-  restartSignal,
-  onFinished,
-}: Props) => {
+const TextBox = ({ testOptions, restartSignal, onFinished }: Props) => {
   const [typed, setTyped] = useState("");
-  const [wordList, setWordList] = useState(generateText({ wordCount }));
+  const [wordList, setWordList] = useState(
+    generateText({ wordCount: testOptions.wordCount })
+  );
 
   const [started, setStarted] = useState(false);
   const [time, setTime] = useState(0);
@@ -79,7 +72,7 @@ const TextBox = ({
 
   useEffect(() => {
     setStarted(false);
-    setWordList(generateText({ wordCount }));
+    setWordList(generateText({ wordCount: testOptions.wordCount }));
     setTyped("");
     if (timerRef.current !== null) {
       clearInterval(timerRef.current);
@@ -93,14 +86,23 @@ const TextBox = ({
   return (
     <div>
       Time: {time}s
-      <div className="textbox-wrap" tabIndex={0} onKeyDown={handleKeyDown}>
+      <div
+        className="textbox-wrap"
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        style={{
+          ["--front-correct-color" as any]: testOptions.style.frontCorrColor,
+          ["--front-incorrect-color" as any]: testOptions.style.frontIncColor,
+          ["--back-color" as any]: testOptions.style.backColor,
+        }}
+      >
         {typed.split("").map((_, index) => (
           <span
             key={index}
             className={
               typed[index] === wordList[index]
-                ? frontCorrClassName
-                : frontIncClassName
+                ? "correctly-typed-text"
+                : "incorrectly-typed-text"
             }
           >
             {wordList[index]}
@@ -110,7 +112,7 @@ const TextBox = ({
         {wordList.split("").map(
           (char, index) =>
             index >= typed.length && (
-              <span key={index} className={backClassName}>
+              <span key={index} className={"black-back-text"}>
                 {char}
               </span>
             )
