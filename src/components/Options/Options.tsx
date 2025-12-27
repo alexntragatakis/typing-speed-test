@@ -1,26 +1,44 @@
 import "./Options.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import type { testOptions } from "../../types/testOptions";
+import type { testOptions, style } from "../../types/testOptions";
 
 interface Props {
   onSave: (data: testOptions) => void;
 }
 
 const Options = ({ onSave }: Props) => {
-  const [wordCount, setWordCount] = useState<number>(25);
-  const [style, setStyle] = useState<testOptions["style"]>({
+  const defaultTheme: style = {
     backGroundColor: "--default-pagebg",
     textBoxColor: "--default-boxbg",
     backColor: "--default-black-back-text",
     frontCorrColor: "--default-correctly-typed-text",
     frontIncColor: "--default-incorrectly-typed-text",
-  });
+  };
+
+  const lightTheme: style = {
+    backGroundColor: "--light-pagebg",
+    textBoxColor: "--light-boxbg",
+    backColor: "--light-black-back-text",
+    frontCorrColor: "--light-correctly-typed-text",
+    frontIncColor: "--light-incorrectly-typed-text",
+  };
+
+  const darkTheme: style = {
+    backGroundColor: "--dark-pagebg",
+    textBoxColor: "--dark-boxbg",
+    backColor: "--dark-black-back-text",
+    frontCorrColor: "--dark-correctly-typed-text",
+    frontIncColor: "--dark-incorrectly-typed-text",
+  };
+
+  const [wordCount, setWordCount] = useState<number>(25);
+  const [appStyle, setAppStyle] = useState<testOptions["style"]>(defaultTheme);
 
   const handleSave = () => {
     onSave({
       wordCount: wordCount,
-      style: style,
+      style: appStyle,
     });
   };
 
@@ -28,46 +46,81 @@ const Options = ({ onSave }: Props) => {
     <>
       <h1>Test Options</h1>
       <div>Word Count:</div>
-      <div
-        className="btn-group"
-        role="group"
-        aria-label="Basic radio toggle button group"
-      >
+      <div className="btn-group" role="group" aria-label="word count buttons">
         <input
           type="radio"
           className="btn-check"
-          name="btnradio"
-          id="btnradio1"
+          name="btnradio-wordcount"
+          id="wc-10"
           autoComplete="off"
           checked={wordCount === 10}
           onClick={() => setWordCount(10)}
         />
-        <label className="btn btn-outline-secondary" htmlFor="btnradio1">
+        <label className="btn btn-outline-secondary" htmlFor="wc-10">
           10
         </label>
         <input
           type="radio"
           className="btn-check"
-          name="btnradio"
-          id="btnradio2"
+          name="btnradio-wordcount"
+          id="wc-25"
           autoComplete="off"
           checked={wordCount === 25}
           onClick={() => setWordCount(25)}
         />
-        <label className="btn btn-outline-secondary" htmlFor="btnradio2">
+        <label className="btn btn-outline-secondary" htmlFor="wc-25">
           25
         </label>
         <input
           type="radio"
           className="btn-check"
-          name="btnradio"
-          id="btnradio3"
+          name="btnradio-wordcount"
+          id="wc-50"
           autoComplete="off"
           checked={wordCount === 50}
           onClick={() => setWordCount(50)}
         />
-        <label className="btn btn-outline-secondary" htmlFor="btnradio3">
+        <label className="btn btn-outline-secondary" htmlFor="wc-50">
           50
+        </label>
+      </div>
+      <div>Theme:</div>
+      <div className="btn-group" role="group" aria-label="theme buttons">
+        <input
+          type="radio"
+          className="btn-check"
+          name="btnradio-theme"
+          id="t-light"
+          autoComplete="off"
+          checked={appStyle.backColor === lightTheme.backColor}
+          onChange={() => setAppStyle(lightTheme)}
+        />
+        <label className="btn btn-outline-secondary" htmlFor="t-light">
+          Light
+        </label>
+        <input
+          type="radio"
+          className="btn-check"
+          name="btnradio-theme"
+          id="t-default"
+          autoComplete="off"
+          checked={appStyle.backColor === defaultTheme.backColor}
+          onChange={() => setAppStyle(defaultTheme)}
+        />
+        <label className="btn btn-outline-secondary" htmlFor="t-default">
+          Default
+        </label>
+        <input
+          type="radio"
+          className="btn-check"
+          name="btnradio-theme"
+          id="t-dark"
+          autoComplete="off"
+          checked={appStyle.backColor === darkTheme.backColor}
+          onChange={() => setAppStyle(darkTheme)}
+        />
+        <label className="btn btn-outline-secondary" htmlFor="t-dark">
+          Dark
         </label>
       </div>
       <div>
