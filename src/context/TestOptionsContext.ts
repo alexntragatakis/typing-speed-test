@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
-import type { testOptions } from "../types/testOptions";
+import type { TestOptionsContextType } from "../types/testOptions";
 
-export const TestOptionsContext = createContext<testOptions | undefined>(
-  undefined
-);
+export const TestOptionsContext = createContext<
+  TestOptionsContextType | undefined
+>(undefined);
 
 export function useTestOptionsContext() {
   const testOptions = useContext(TestOptionsContext);

@@ -1,3 +1,8 @@
+export interface TestOptionsContextType {
+  testOptions: testOptions;
+  setTestOptions: React.Dispatch<React.SetStateAction<testOptions>>;
+}
+
 export interface testOptions {
   wordCount: number;
   style: style;
