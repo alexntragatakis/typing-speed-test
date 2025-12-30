@@ -22,13 +22,6 @@ const Root = () => {
   const [testOptions, setTestOptions] = useState({
     /* Default Test Settings */
     wordCount: 25,
-    style: {
-      backGroundColor: "--default-pagebg",
-      textBoxColor: "--default-boxbg",
-      backColor: "--default-black-back-text",
-      frontCorrColor: "--default-correctly-typed-text",
-      frontIncColor: "--default-incorrectly-typed-text",
-    },
   });
 
   return (

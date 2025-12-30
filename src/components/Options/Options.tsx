@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import type { testOptions, style } from "../../types/testOptions";
 
+// TODO: Fix settings resetting when navigating to options
+
 const Options = () => {
   const defaultTheme: style = {
     backGroundColor: "--default-pagebg",
@@ -29,7 +31,7 @@ const Options = () => {
   };
 
   const [wordCount, setWordCount] = useState<number>(25);
-  const [appStyle, setAppStyle] = useState<testOptions["style"]>(defaultTheme);
+  const [appStyle, setAppStyle] = useState<style>(defaultTheme);
 
   useEffect(() => {
     const root = document.documentElement;
