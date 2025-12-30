@@ -2,12 +2,9 @@ import "./Options.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { testOptions, style } from "../../types/testOptions";
+import { useTestOptionsContext } from "../../context/TestOptionsContext";
 
-interface Props {
-  onSave: (data: testOptions) => void;
-}
-
-const Options = ({ onSave }: Props) => {
+const Options = () => {
   const defaultTheme: style = {
     backGroundColor: "--default-pagebg",
     textBoxColor: "--default-boxbg",
@@ -34,9 +31,10 @@ const Options = ({ onSave }: Props) => {
 
   const [wordCount, setWordCount] = useState<number>(25);
   const [appStyle, setAppStyle] = useState<testOptions["style"]>(defaultTheme);
+  const { testOptions, setTestOptions } = useTestOptionsContext();
 
   const handleSave = () => {
-    onSave({
+    setTestOptions({
       wordCount: wordCount,
       style: appStyle,
     });

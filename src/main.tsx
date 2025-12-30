@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   { path: "/typing-speed-test/", element: <App /> },
   {
     path: "/typing-speed-test/options",
-    element: <Options onSave={(data) => {}} />,
+    element: <Options />,
   },
 ]);
 
