@@ -112,7 +112,7 @@ const TextBox = ({ testOptions, restartSignal, onFinished }: Props) => {
         {wordList.split("").map(
           (char, index) =>
             index >= typed.length && (
-              <span key={index} className={"black-back-text"}>
+              <span key={index} className={"back-text"}>
                 {char}
               </span>
             )

@@ -9,8 +9,8 @@
   font-size: 30px;
 }
 
-.black-back-text {
-  color: var(--black-back-text);
+.back-text {
+  color: var(--back-text);
 }
 
 .correctly-typed-text {

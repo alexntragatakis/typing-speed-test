@@ -2,26 +2,26 @@
   /* theme colors */
   --default-pagebg: rgb(190, 190, 190);
   --default-boxbg: rgb(150, 150, 150);
-  --default-black-back-text: rgb(62, 62, 62);
+  --default-back-text: rgb(62, 62, 62);
   --default-correctly-typed-text: rgb(0, 0, 0);
   --default-incorrectly-typed-text: rgb(255, 0, 0);
 
   --light-pagebg: rgb(255, 255, 255);
   --light-boxbg: rgb(221, 221, 221);
-  --light-black-back-text: rgb(105, 105, 105);
+  --light-back-text: rgb(105, 105, 105);
   --light-correctly-typed-text: rgb(0, 0, 0);
   --light-incorrectly-typed-text: rgb(255, 0, 0);
 
   --dark-pagebg: rgb(75, 75, 75);
   --dark-boxbg: rgb(50, 50, 50);
-  --dark-black-back-text: rgb(25, 25, 25);
+  --dark-back-text: rgb(25, 25, 25);
   --dark-correctly-typed-text: rgb(200, 200, 200);
   --dark-incorrectly-typed-text: rgb(255, 0, 0);
 
   /* runtime variables */
   --pagebg: var(--default-pagebg);
   --boxbg: var(--default-boxbg);
-  --black-back-text: var(--default-black-back-text);
+  --back-text: var(--default-back-text);
   --correctly-typed-text: var(--default-correctly-typed-text);
   --incorrectly-typed-text: var(--default-incorrectly-typed-text);
 }
