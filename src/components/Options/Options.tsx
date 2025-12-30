@@ -2,7 +2,6 @@ import "./Options.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import type { testOptions, style } from "../../types/testOptions";
-import { useTestOptionsContext } from "../../context/TestOptionsContext";
 
 const Options = () => {
   const defaultTheme: style = {
@@ -31,14 +30,6 @@ const Options = () => {
 
   const [wordCount, setWordCount] = useState<number>(25);
   const [appStyle, setAppStyle] = useState<testOptions["style"]>(defaultTheme);
-  const { testOptions, setTestOptions } = useTestOptionsContext();
-
-  const handleSave = () => {
-    setTestOptions({
-      wordCount: wordCount,
-      style: appStyle,
-    });
-  };
 
   useEffect(() => {
     const root = document.documentElement;
@@ -138,12 +129,9 @@ const Options = () => {
           Dark
         </label>
       </div>
-      <div>
-        <button onClick={handleSave}>Save</button>
-        <Link to="/typing-speed-test/">
-          <button>Back</button>
-        </Link>
-      </div>
+      <Link to="/typing-speed-test/">
+        <button>Back</button>
+      </Link>
     </>
   );
 };
