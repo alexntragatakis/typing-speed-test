@@ -2,18 +2,17 @@ import "./TextBox.css";
 import { useState, useEffect, useRef } from "react";
 import generateText from "../../utils/generateText.ts";
 import type { rawResult } from "../../types/resultTypes.ts";
-import type { testOptions } from "../../types/testOptions.ts";
 
 interface Props {
-  testOptions: testOptions;
+  wordCount: number;
   restartSignal: number;
   onFinished: (data: rawResult) => void;
 }
 
-const TextBox = ({ testOptions, restartSignal, onFinished }: Props) => {
+const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
   const [typed, setTyped] = useState("");
   const [wordList, setWordList] = useState(
-    generateText({ wordCount: testOptions.wordCount })
+    generateText({ wordCount: wordCount })
   );
 
   const [started, setStarted] = useState(false);
@@ -72,7 +71,7 @@ const TextBox = ({ testOptions, restartSignal, onFinished }: Props) => {
 
   useEffect(() => {
     setStarted(false);
-    setWordList(generateText({ wordCount: testOptions.wordCount }));
+    setWordList(generateText({ wordCount: wordCount }));
     setTyped("");
     if (timerRef.current !== null) {
       clearInterval(timerRef.current);
@@ -86,16 +85,7 @@ const TextBox = ({ testOptions, restartSignal, onFinished }: Props) => {
   return (
     <div>
       Time: {time}s
-      <div
-        className="textbox-wrap"
-        tabIndex={0}
-        onKeyDown={handleKeyDown}
-        style={{
-          ["--front-correct-color" as any]: testOptions.style.frontCorrColor,
-          ["--front-incorrect-color" as any]: testOptions.style.frontIncColor,
-          ["--back-color" as any]: testOptions.style.backColor,
-        }}
-      >
+      <div className="textbox-wrap" tabIndex={0} onKeyDown={handleKeyDown}>
         {typed.split("").map((_, index) => (
           <span
             key={index}

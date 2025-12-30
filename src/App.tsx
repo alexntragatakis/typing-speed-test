@@ -28,16 +28,7 @@ function App() {
       <div className="content">
         {!showResults ? (
           <TextBox
-            testOptions={{
-              wordCount: 25,
-              style: {
-                backGroundColor: "--default-pagebg",
-                textBoxColor: "--default-boxbg",
-                backColor: "--default-black-back-text",
-                frontCorrColor: "--default-correctly-typed-text",
-                frontIncColor: "--default-incorrectly-typed-text",
-              },
-            }}
+            wordCount={25}
             restartSignal={restartSignal}
             onFinished={handleFinished}
           ></TextBox>
