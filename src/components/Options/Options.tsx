@@ -1,5 +1,5 @@
 import "./Options.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import type { testOptions, style } from "../../types/testOptions";
 import { useTestOptionsContext } from "../../context/TestOptionsContext";
@@ -39,6 +39,23 @@ const Options = () => {
       style: appStyle,
     });
   };
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    /* change the runtime variables */
+    root.style.setProperty("--pagebg", "var(" + appStyle.backGroundColor + ")");
+    root.style.setProperty("--boxbg", "var(" + appStyle.textBoxColor + ")");
+    root.style.setProperty("--back-text", "var(" + appStyle.backColor + ")");
+    root.style.setProperty(
+      "--correctly-typed-text",
+      "var(" + appStyle.frontCorrColor + ")"
+    );
+    root.style.setProperty(
+      "--incorrectly-typed-text",
+      "var(" + appStyle.frontIncColor + ")"
+    );
+  }, [appStyle]);
 
   return (
     <>
