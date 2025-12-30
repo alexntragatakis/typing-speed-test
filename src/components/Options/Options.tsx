@@ -2,7 +2,7 @@ import "./Options.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTestOptionsContext } from "../../context/TestOptionsContext";
-import type { testOptions, style } from "../../types/testOptions";
+import type { style } from "../../types/testOptions";
 
 const Options = () => {
   const defaultTheme: style = {

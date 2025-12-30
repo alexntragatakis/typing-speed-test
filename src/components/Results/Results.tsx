@@ -1,5 +1,5 @@
 import "./Results.css";
-import type { processedResult } from "../../utils/calculateStats";
+import type { processedResult } from "../../types/resultTypes";
 
 interface Props {
   result: processedResult;
