@@ -1,5 +1,5 @@
 body {
-  background-color: var(--default-pagebg);
+  background-color: var(--pagebg);
 }
 
 .centered-page {

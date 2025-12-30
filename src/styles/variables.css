@@ -1,4 +1,5 @@
 :root {
+  /* theme colors */
   --default-pagebg: rgb(190, 190, 190);
   --default-boxbg: rgb(150, 150, 150);
   --default-black-back-text: rgb(62, 62, 62);
@@ -16,4 +17,11 @@
   --dark-black-back-text: rgb(25, 25, 25);
   --dark-correctly-typed-text: rgb(200, 200, 200);
   --dark-incorrectly-typed-text: rgb(255, 0, 0);
+
+  /* runtime variables */
+  --pagebg: var(--default-pagebg);
+  --boxbg: var(--default-boxbg);
+  --black-back-text: var(--default-black-back-text);
+  --correctly-typed-text: var(--default-correctly-typed-text);
+  --incorrectly-typed-text: var(--default-incorrectly-typed-text);
 }
