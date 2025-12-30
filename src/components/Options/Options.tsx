@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import type { testOptions, style } from "../../types/testOptions";
 
-// TODO: Fix settings resetting when navigating to options
-
 const Options = () => {
   const defaultTheme: style = {
     backGroundColor: "--default-pagebg",
@@ -30,12 +28,17 @@ const Options = () => {
     frontIncColor: "--dark-incorrectly-typed-text",
   };
 
+  const root = document.documentElement;
+  let initialTheme: style = defaultTheme;
+  if (root.style.getPropertyValue("--pagebg") === "var(--light-pagebg)") {
+    initialTheme = lightTheme;
+  } else if (root.style.getPropertyValue("--pagebg") === "var(--dark-pagebg)") {
+    initialTheme = darkTheme;
+  }
   const [wordCount, setWordCount] = useState<number>(25);
-  const [appStyle, setAppStyle] = useState<style>(defaultTheme);
+  const [appStyle, setAppStyle] = useState<style>(initialTheme);
 
   useEffect(() => {
-    const root = document.documentElement;
-
     /* change the runtime variables */
     root.style.setProperty("--pagebg", "var(" + appStyle.backGroundColor + ")");
     root.style.setProperty("--boxbg", "var(" + appStyle.textBoxColor + ")");
