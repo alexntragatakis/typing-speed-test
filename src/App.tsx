@@ -4,9 +4,12 @@ import TextBox from "./components/TextBox/TextBox";
 import Results from "./components/Results/Results";
 import ControlBar from "./components/ControlBar/ControlBar";
 import { calculateResults } from "./utils/calculateStats";
+import { useTestOptionsContext } from "./context/TestOptionsContext";
 import type { rawResult } from "./types/resultTypes.ts";
 
 function App() {
+  const { testOptions } = useTestOptionsContext();
+
   const [restartSignal, setRestartSignal] = useState(0);
 
   const [showResults, setDisplayResults] = useState(false);
@@ -28,7 +31,7 @@ function App() {
       <div className="content">
         {!showResults ? (
           <TextBox
-            wordCount={25}
+            wordCount={testOptions.wordCount}
             restartSignal={restartSignal}
             onFinished={handleFinished}
           ></TextBox>

@@ -1,6 +1,7 @@
 import "./Options.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useTestOptionsContext } from "../../context/TestOptionsContext";
 import type { testOptions, style } from "../../types/testOptions";
 
 const Options = () => {
@@ -35,8 +36,12 @@ const Options = () => {
   } else if (root.style.getPropertyValue("--pagebg") === "var(--dark-pagebg)") {
     initialTheme = darkTheme;
   }
-  const [wordCount, setWordCount] = useState<number>(25);
   const [appStyle, setAppStyle] = useState<style>(initialTheme);
+
+  const { testOptions, setTestOptions } = useTestOptionsContext();
+  const changeWordCount = (count: number) => {
+    setTestOptions((prev) => ({ prev, wordCount: count }));
+  };
 
   useEffect(() => {
     /* change the runtime variables */
@@ -64,8 +69,8 @@ const Options = () => {
           name="btnradio-wordcount"
           id="wc-10"
           autoComplete="off"
-          checked={wordCount === 10}
-          onClick={() => setWordCount(10)}
+          checked={testOptions.wordCount === 10}
+          onClick={() => changeWordCount(10)}
         />
         <label className="btn btn-outline-secondary" htmlFor="wc-10">
           10
@@ -76,8 +81,8 @@ const Options = () => {
           name="btnradio-wordcount"
           id="wc-25"
           autoComplete="off"
-          checked={wordCount === 25}
-          onClick={() => setWordCount(25)}
+          checked={testOptions.wordCount === 25}
+          onClick={() => changeWordCount(25)}
         />
         <label className="btn btn-outline-secondary" htmlFor="wc-25">
           25
@@ -88,8 +93,8 @@ const Options = () => {
           name="btnradio-wordcount"
           id="wc-50"
           autoComplete="off"
-          checked={wordCount === 50}
-          onClick={() => setWordCount(50)}
+          checked={testOptions.wordCount === 50}
+          onClick={() => changeWordCount(50)}
         />
         <label className="btn btn-outline-secondary" htmlFor="wc-50">
           50
