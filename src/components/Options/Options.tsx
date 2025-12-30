@@ -9,7 +9,7 @@ const Options = () => {
   const defaultTheme: style = {
     backGroundColor: "--default-pagebg",
     textBoxColor: "--default-boxbg",
-    backColor: "--default-black-back-text",
+    backColor: "--default-back-text",
     frontCorrColor: "--default-correctly-typed-text",
     frontIncColor: "--default-incorrectly-typed-text",
   };
@@ -17,7 +17,7 @@ const Options = () => {
   const lightTheme: style = {
     backGroundColor: "--light-pagebg",
     textBoxColor: "--light-boxbg",
-    backColor: "--light-black-back-text",
+    backColor: "--light-back-text",
     frontCorrColor: "--light-correctly-typed-text",
     frontIncColor: "--light-incorrectly-typed-text",
   };
@@ -25,7 +25,7 @@ const Options = () => {
   const darkTheme: style = {
     backGroundColor: "--dark-pagebg",
     textBoxColor: "--dark-boxbg",
-    backColor: "--dark-black-back-text",
+    backColor: "--dark-back-text",
     frontCorrColor: "--dark-correctly-typed-text",
     frontIncColor: "--dark-incorrectly-typed-text",
   };
