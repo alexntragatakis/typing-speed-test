@@ -1,5 +1,5 @@
 # Typing Speed Test
-This front end web project is a typing speed test built with React and Typescript designed to measure typing speed and accuracy. The application manages time-based state, user input events, and UI updates using modular, type-safe component architecture.
+This front end web project is a typing speed test built with React and TypeScript designed to measure typing speed and accuracy. The application manages time-based state, user input events, and UI updates using modular, type-safe component architecture.
 
 ### Live Demo
 Check out the live verison here: [https://alexntragatakis.github.io/typing-speed-test/](https://alexntragatakis.github.io/typing-speed-test/)
@@ -12,7 +12,7 @@ Check out the live verison here: [https://alexntragatakis.github.io/typing-speed
 - Selectable preset color themes using CSS runtime variables
 
 ### Tech Stack
-- Language: Typescript
+- Language: TypeScript
 - Framework: React
 - Styling: CSS
 - Build tool: Vite
