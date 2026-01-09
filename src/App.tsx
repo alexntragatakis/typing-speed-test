@@ -27,20 +27,23 @@ function App() {
   };
 
   return (
-    <div className="centered-page">
-      <div className="content">
-        {!showResults ? (
-          <TextBox
-            wordCount={testOptions.wordCount}
-            restartSignal={restartSignal}
-            onFinished={handleFinished}
-          ></TextBox>
-        ) : (
-          <Results result={calculateResults(rawResults!)}></Results>
-        )}
-      </div>
-      <div className="bottom-row">
-        <ControlBar onRestart={handleRestart} />
+    <div className="page">
+      <h1>Typing Speed Test</h1>
+      <div className="centered-page">
+        <div className="content">
+          {!showResults ? (
+            <TextBox
+              wordCount={testOptions.wordCount}
+              restartSignal={restartSignal}
+              onFinished={handleFinished}
+            ></TextBox>
+          ) : (
+            <Results result={calculateResults(rawResults!)}></Results>
+          )}
+        </div>
+        <div className="bottom-row">
+          <ControlBar onRestart={handleRestart} />
+        </div>
       </div>
     </div>
   );
