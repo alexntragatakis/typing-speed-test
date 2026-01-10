@@ -61,87 +61,97 @@ const Options = () => {
   return (
     <>
       <h1>Test Options</h1>
-      <div>Word Count:</div>
-      <div className="btn-group" role="group" aria-label="word count buttons">
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio-wordcount"
-          id="wc-10"
-          autoComplete="off"
-          checked={testOptions.wordCount === 10}
-          onClick={() => changeWordCount(10)}
-        />
-        <label className="btn btn-outline-secondary" htmlFor="wc-10">
-          10
-        </label>
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio-wordcount"
-          id="wc-25"
-          autoComplete="off"
-          checked={testOptions.wordCount === 25}
-          onClick={() => changeWordCount(25)}
-        />
-        <label className="btn btn-outline-secondary" htmlFor="wc-25">
-          25
-        </label>
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio-wordcount"
-          id="wc-50"
-          autoComplete="off"
-          checked={testOptions.wordCount === 50}
-          onClick={() => changeWordCount(50)}
-        />
-        <label className="btn btn-outline-secondary" htmlFor="wc-50">
-          50
-        </label>
+      <div className="options">
+        <div>
+          <div>Word Count:</div>
+          <div
+            className="btn-group"
+            role="group"
+            aria-label="word count buttons"
+          >
+            <input
+              type="radio"
+              className="btn-check"
+              name="btnradio-wordcount"
+              id="wc-10"
+              autoComplete="off"
+              checked={testOptions.wordCount === 10}
+              onClick={() => changeWordCount(10)}
+            />
+            <label className="btn btn-outline-secondary" htmlFor="wc-10">
+              10
+            </label>
+            <input
+              type="radio"
+              className="btn-check"
+              name="btnradio-wordcount"
+              id="wc-25"
+              autoComplete="off"
+              checked={testOptions.wordCount === 25}
+              onClick={() => changeWordCount(25)}
+            />
+            <label className="btn btn-outline-secondary" htmlFor="wc-25">
+              25
+            </label>
+            <input
+              type="radio"
+              className="btn-check"
+              name="btnradio-wordcount"
+              id="wc-50"
+              autoComplete="off"
+              checked={testOptions.wordCount === 50}
+              onClick={() => changeWordCount(50)}
+            />
+            <label className="btn btn-outline-secondary" htmlFor="wc-50">
+              50
+            </label>
+          </div>
+        </div>
+        <div>
+          <div>Theme:</div>
+          <div className="btn-group" role="group" aria-label="theme buttons">
+            <input
+              type="radio"
+              className="btn-check"
+              name="btnradio-theme"
+              id="t-light"
+              autoComplete="off"
+              checked={appStyle.backColor === lightTheme.backColor}
+              onChange={() => setAppStyle(lightTheme)}
+            />
+            <label className="btn btn-outline-secondary" htmlFor="t-light">
+              Light
+            </label>
+            <input
+              type="radio"
+              className="btn-check"
+              name="btnradio-theme"
+              id="t-default"
+              autoComplete="off"
+              checked={appStyle.backColor === defaultTheme.backColor}
+              onChange={() => setAppStyle(defaultTheme)}
+            />
+            <label className="btn btn-outline-secondary" htmlFor="t-default">
+              Default
+            </label>
+            <input
+              type="radio"
+              className="btn-check"
+              name="btnradio-theme"
+              id="t-dark"
+              autoComplete="off"
+              checked={appStyle.backColor === darkTheme.backColor}
+              onChange={() => setAppStyle(darkTheme)}
+            />
+            <label className="btn btn-outline-secondary" htmlFor="t-dark">
+              Dark
+            </label>
+          </div>
+        </div>
+        <Link to="/typing-speed-test/">
+          <button>Back</button>
+        </Link>
       </div>
-      <div>Theme:</div>
-      <div className="btn-group" role="group" aria-label="theme buttons">
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio-theme"
-          id="t-light"
-          autoComplete="off"
-          checked={appStyle.backColor === lightTheme.backColor}
-          onChange={() => setAppStyle(lightTheme)}
-        />
-        <label className="btn btn-outline-secondary" htmlFor="t-light">
-          Light
-        </label>
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio-theme"
-          id="t-default"
-          autoComplete="off"
-          checked={appStyle.backColor === defaultTheme.backColor}
-          onChange={() => setAppStyle(defaultTheme)}
-        />
-        <label className="btn btn-outline-secondary" htmlFor="t-default">
-          Default
-        </label>
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio-theme"
-          id="t-dark"
-          autoComplete="off"
-          checked={appStyle.backColor === darkTheme.backColor}
-          onChange={() => setAppStyle(darkTheme)}
-        />
-        <label className="btn btn-outline-secondary" htmlFor="t-dark">
-          Dark
-        </label>
-      </div>
-      <Link to="/typing-speed-test/">
-        <button>Back</button>
-      </Link>
     </>
   );
 };
