@@ -86,18 +86,28 @@ const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
     <div>
       Time: {time}s
       <div className="textbox-wrap" tabIndex={0} onKeyDown={handleKeyDown}>
-        {typed.split("").map((_, index) => (
-          <span
-            key={index}
-            className={
-              typed[index] === wordList[index]
-                ? "correctly-typed-text"
-                : "incorrectly-typed-text"
-            }
-          >
-            {wordList[index]}
-          </span>
-        ))}
+        {typed.split("").map((_, index) => {
+          if (typed[index] !== " " && wordList[index] === " ") {
+            return (
+              <span key={index} className="incorrectly-typed-text">
+                -
+              </span>
+            );
+          } else {
+            return (
+              <span
+                key={index}
+                className={
+                  typed[index] === wordList[index]
+                    ? "correctly-typed-text"
+                    : "incorrectly-typed-text"
+                }
+              >
+                {wordList[index]}
+              </span>
+            );
+          }
+        })}
         <span className="caret" />
         {wordList.split("").map(
           (char, index) =>
