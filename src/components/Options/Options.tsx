@@ -11,6 +11,7 @@ const Options = () => {
     backColor: "--default-back-text",
     frontCorrColor: "--default-correctly-typed-text",
     frontIncColor: "--default-incorrectly-typed-text",
+    bootstrapBtnClass: "btn-outline-secondary",
   };
 
   const lightTheme: style = {
@@ -19,6 +20,7 @@ const Options = () => {
     backColor: "--light-back-text",
     frontCorrColor: "--light-correctly-typed-text",
     frontIncColor: "--light-incorrectly-typed-text",
+    bootstrapBtnClass: "btn-outline-dark",
   };
 
   const darkTheme: style = {
@@ -27,6 +29,7 @@ const Options = () => {
     backColor: "--dark-back-text",
     frontCorrColor: "--dark-correctly-typed-text",
     frontIncColor: "--dark-incorrectly-typed-text",
+    bootstrapBtnClass: "btn-outline-light",
   };
 
   const root = document.documentElement;
@@ -78,7 +81,10 @@ const Options = () => {
               checked={testOptions.wordCount === 10}
               onClick={() => changeWordCount(10)}
             />
-            <label className="btn btn-outline-secondary" htmlFor="wc-10">
+            <label
+              className={`btn ${appStyle.bootstrapBtnClass}`}
+              htmlFor="wc-10"
+            >
               10
             </label>
             <input
@@ -90,7 +96,10 @@ const Options = () => {
               checked={testOptions.wordCount === 25}
               onClick={() => changeWordCount(25)}
             />
-            <label className="btn btn-outline-secondary" htmlFor="wc-25">
+            <label
+              className={`btn ${appStyle.bootstrapBtnClass}`}
+              htmlFor="wc-25"
+            >
               25
             </label>
             <input
@@ -102,7 +111,10 @@ const Options = () => {
               checked={testOptions.wordCount === 50}
               onClick={() => changeWordCount(50)}
             />
-            <label className="btn btn-outline-secondary" htmlFor="wc-50">
+            <label
+              className={`btn ${appStyle.bootstrapBtnClass}`}
+              htmlFor="wc-50"
+            >
               50
             </label>
           </div>
@@ -119,7 +131,10 @@ const Options = () => {
               checked={appStyle.backColor === lightTheme.backColor}
               onChange={() => setAppStyle(lightTheme)}
             />
-            <label className="btn btn-outline-secondary" htmlFor="t-light">
+            <label
+              className={`btn ${appStyle.bootstrapBtnClass}`}
+              htmlFor="t-light"
+            >
               Light
             </label>
             <input
@@ -131,7 +146,10 @@ const Options = () => {
               checked={appStyle.backColor === defaultTheme.backColor}
               onChange={() => setAppStyle(defaultTheme)}
             />
-            <label className="btn btn-outline-secondary" htmlFor="t-default">
+            <label
+              className={`btn ${appStyle.bootstrapBtnClass}`}
+              htmlFor="t-default"
+            >
               Default
             </label>
             <input
@@ -143,7 +161,10 @@ const Options = () => {
               checked={appStyle.backColor === darkTheme.backColor}
               onChange={() => setAppStyle(darkTheme)}
             />
-            <label className="btn btn-outline-secondary" htmlFor="t-dark">
+            <label
+              className={`btn ${appStyle.bootstrapBtnClass}`}
+              htmlFor="t-dark"
+            >
               Dark
             </label>
           </div>

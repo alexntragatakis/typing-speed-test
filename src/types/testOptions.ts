@@ -13,4 +13,5 @@ export interface style {
   backColor: string;
   frontCorrColor: string;
   frontIncColor: string;
+  bootstrapBtnClass: string;
 }
