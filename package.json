@@ -6,7 +6,7 @@
   "homepage": "https://alexntragatakis.github.io/typing-speed-test",
   "scripts": {
     "dev:client": "vite",
-    "dev:server": "nodemon --watch server --ext ts,json --exec ts-node --transpile-only server/index.ts",
+    "dev:server": "nodemon --watch server --ext ts,json --exec tsx server/index.ts",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
