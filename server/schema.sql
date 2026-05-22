@@ -6,3 +6,5 @@ CREATE TABLE IF NOT EXISTS scores (
   word_count INTEGER NOT NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+CREATE INDEX IF NOT EXISTS idx_scores_wpm ON scores (wpm DESC);
