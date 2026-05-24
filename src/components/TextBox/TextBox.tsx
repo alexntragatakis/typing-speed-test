@@ -70,6 +70,7 @@ const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
           time: elapsedTime,
           typed,
           wordList,
+          wordCount,
         });
 
         submitScore(result);

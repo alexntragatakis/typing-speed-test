@@ -16,7 +16,7 @@ export function calculateResults(raw: testData) {
   const result: newScore = {
     wpm,
     accuracy,
-    wordCount: raw.wordList.length,
+    wordCount: raw.wordCount,
   };
 
   return result;

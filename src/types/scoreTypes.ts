@@ -2,6 +2,7 @@ export interface testData {
   time: number;
   wordList: string;
   typed: string;
+  wordCount: number;
 }
 
 export interface newScore {
