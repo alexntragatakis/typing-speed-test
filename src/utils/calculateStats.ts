@@ -1,6 +1,6 @@
-import type { rawResult, processedResult } from "../types/resultTypes.ts";
+import type { testData, newScore } from "../types/scoreTypes.ts";
 
-export function calculateResults(raw: rawResult) {
+export function calculateResults(raw: testData) {
   let correct = 0;
   for (let i = 0; i < raw.wordList.length; i++) {
     if (raw.wordList[i] === raw.typed[i]) {
@@ -11,11 +11,12 @@ export function calculateResults(raw: rawResult) {
 
   const words = raw.wordList.length / 5;
   const minutes = raw.time / 60000;
-  const WPM = Math.round((words / minutes) * (correct / raw.wordList.length));
+  const wpm = Math.round((words / minutes) * (correct / raw.wordList.length));
 
-  const result: processedResult = {
-    WPM: WPM,
-    accuracy: accuracy,
+  const result: newScore = {
+    wpm,
+    accuracy,
+    wordCount: raw.wordList.length,
   };
 
   return result;

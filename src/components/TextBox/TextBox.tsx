@@ -2,12 +2,13 @@ import "./TextBox.css";
 import { useState, useEffect, useRef } from "react";
 import { useScores } from "../../hooks/useScores.ts";
 import generateText from "../../utils/generateText.ts";
-import type { rawResult } from "../../types/resultTypes.ts";
+import { calculateResults } from "../..//utils/calculateStats";
+import type { newScore } from "../../types/scoreTypes.ts";
 
 interface Props {
   wordCount: number;
   restartSignal: number;
-  onFinished: (data: rawResult) => void;
+  onFinished: (data: newScore) => void;
 }
 
 const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
@@ -64,13 +65,14 @@ const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
       if (startTimeRef.current !== null) {
         const elapsedTime = Date.now() - startTimeRef.current;
         startTimeRef.current = null;
-        const result: rawResult = {
-          // TODO: replace rawResult and processedResult with a newScore type with processed data
+
+        const result: newScore = calculateResults({
           time: elapsedTime,
-          typed: typed,
-          wordList: wordList,
-        };
-        submitScore(100, 98.7, wordList.length); // test
+          typed,
+          wordList,
+        });
+
+        submitScore(result);
         onFinished(result);
       }
     }

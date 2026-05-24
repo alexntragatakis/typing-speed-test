@@ -21,12 +21,12 @@ router.get("/", async (_req: Request, res: Response) => {
 
 // POST /api/scores — save a result
 router.post("/", async (req: Request, res: Response) => {
-  const { username = "Anonymous", wpm, accuracy, word_count } = req.body;
+  const { username = "Anonymous", wpm, accuracy, wordCount } = req.body;
 
   if (
     typeof wpm !== "number" ||
     typeof accuracy !== "number" ||
-    typeof word_count !== "number"
+    typeof wordCount !== "number"
   ) {
     res.status(400).json({ error: "Invalid payload" });
     return;
@@ -35,7 +35,7 @@ router.post("/", async (req: Request, res: Response) => {
   try {
     const rows = await sql`
       INSERT INTO scores (username, wpm, accuracy, word_count)
-      VALUES (${username}, ${Math.round(wpm)}, ${accuracy}, ${word_count})
+      VALUES (${username}, ${Math.round(wpm)}, ${accuracy}, ${wordCount})
       RETURNING *
     `;
     res.status(201).json(rows[0]);

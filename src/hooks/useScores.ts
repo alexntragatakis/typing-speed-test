@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import type { Score } from "../types/resultTypes";
+import type { newScore, Score } from "../types/scoreTypes";
 
 export function useScores() {
   const [scores, setScores] = useState<Score[]>([]);
@@ -21,16 +21,11 @@ export function useScores() {
   }, [fetchScores]);
 
   const submitScore = useCallback(
-    async (
-      wpm: number,
-      accuracy: number,
-      word_count: number,
-      username = "Anonymous",
-    ) => {
+    async ({ wpm, accuracy, wordCount, username = "Anonymous" }: newScore) => {
       await fetch("/api/scores", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, wpm, accuracy, word_count }),
+        body: JSON.stringify({ username, wpm, accuracy, wordCount }),
       });
       await fetchScores();
     },

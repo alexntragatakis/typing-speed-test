@@ -1,12 +1,14 @@
-export interface rawResult {
+export interface testData {
   time: number;
-  typed: string;
   wordList: string;
+  typed: string;
 }
 
-export interface processedResult {
-  WPM: number;
+export interface newScore {
+  username?: string;
+  wpm: number;
   accuracy: number;
+  wordCount: number;
 }
 
 export interface Score {
