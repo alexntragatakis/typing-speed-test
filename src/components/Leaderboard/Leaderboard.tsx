@@ -70,6 +70,7 @@ const Leaderboard = () => {
                   <th className="col-rank">#</th>
                   <th className="col-username">Player</th>
                   <th className="col-wpm">WPM</th>
+                  <th className="col-accuracy">Accuracy</th>
                   <th className="col-date">Date</th>
                 </tr>
               </thead>
@@ -82,6 +83,7 @@ const Leaderboard = () => {
                     <td className="col-rank">{index + 1}</td>
                     <td className="col-username">{score.username}</td>
                     <td className="col-wpm">{score.wpm}</td>
+                    <td className="col-accuracy">{score.accuracy}%</td>
                     <td className="col-date">{formatDate(score.createdAt)}</td>
                   </tr>
                 ))}

@@ -87,6 +87,9 @@
 .col-wpm {
   width: 5rem;
 }
+.col-accuracy {
+  width: 5rem;
+}
 .col-date {
   width: 8rem;
   color: var(--back-text);
