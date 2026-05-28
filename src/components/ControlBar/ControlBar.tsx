@@ -8,7 +8,7 @@ interface Props {
 
 const ControlBar = ({ onRestart }: Props) => {
   const [bootstrapClass, setBootstrapClass] = useState<string>(
-    "btn-outline-secondary"
+    "btn-outline-secondary",
   );
   useEffect(() => {
     const root = document.documentElement;
@@ -30,6 +30,9 @@ const ControlBar = ({ onRestart }: Props) => {
       </button>
       <Link to="/typing-speed-test/options">
         <button className={`btn ${bootstrapClass}`}>Options</button>
+      </Link>
+      <Link to="/typing-speed-test/leaderboard">
+        <button className={`btn ${bootstrapClass}`}>Leaderboard</button>
       </Link>
     </div>
   );

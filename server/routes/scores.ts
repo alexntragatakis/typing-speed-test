@@ -12,7 +12,16 @@ router.get("/", async (_req: Request, res: Response) => {
       ORDER BY wpm DESC
       LIMIT 50
     `;
-    res.json(rows);
+    res.json(
+      rows.map((row) => ({
+        id: row.id,
+        username: row.username,
+        wpm: row.wpm,
+        accuracy: parseFloat(row.accuracy),
+        wordCount: row.word_count,
+        createdAt: row.created_at,
+      })),
+    );
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Database error" });
