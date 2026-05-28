@@ -6,12 +6,13 @@ import { calculateResults } from "../..//utils/calculateStats";
 import type { newScore } from "../../types/scoreTypes.ts";
 
 interface Props {
+  username: string;
   wordCount: number;
   restartSignal: number;
   onFinished: (data: newScore) => void;
 }
 
-const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
+const TextBox = ({ username, wordCount, restartSignal, onFinished }: Props) => {
   const [typed, setTyped] = useState("");
   const [wordList, setWordList] = useState(
     generateText({ wordCount: wordCount }),
@@ -72,6 +73,9 @@ const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
           wordList,
           wordCount,
         });
+        username === ""
+          ? (result.username = "Anonymous")
+          : (result.username = username);
 
         submitScore(result);
         onFinished(result);

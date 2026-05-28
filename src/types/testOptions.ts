@@ -4,6 +4,7 @@ export interface TestOptionsContextType {
 }
 
 export interface testOptions {
+  username: string;
   wordCount: number;
 }
 

@@ -32,6 +32,7 @@ function App() {
         <div className="content">
           {!showResults ? (
             <TextBox
+              username={testOptions.username || "Anonymous"}
               wordCount={testOptions.wordCount}
               restartSignal={restartSignal}
               onFinished={handleFinished}
