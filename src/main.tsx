@@ -12,13 +12,13 @@ import Leaderboard from "./components/Leaderboard/Leaderboard.tsx";
 import { TestOptionsContext } from "./context/TestOptionsContext.ts";
 
 const router = createBrowserRouter([
-  { path: "/typing-speed-test/", element: <App /> },
+  { path: "/", element: <App /> },
   {
-    path: "/typing-speed-test/options",
+    path: "/options",
     element: <Options />,
   },
   {
-    path: "/typing-speed-test/leaderboard",
+    path: "/leaderboard",
     element: <Leaderboard />,
   },
 ]);
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
 const Root = () => {
   const [testOptions, setTestOptions] = useState({
     /* Default Test Settings */
+    username: "Anonymous",
     wordCount: 25,
   });
 

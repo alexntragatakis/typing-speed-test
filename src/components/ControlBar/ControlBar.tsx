@@ -28,10 +28,10 @@ const ControlBar = ({ onRestart }: Props) => {
       <button className={`btn ${bootstrapClass}`} onClick={onRestart}>
         Restart
       </button>
-      <Link to="/typing-speed-test/options">
+      <Link to="/options">
         <button className={`btn ${bootstrapClass}`}>Options</button>
       </Link>
-      <Link to="/typing-speed-test/leaderboard">
+      <Link to="/leaderboard">
         <button className={`btn ${bootstrapClass}`}>Leaderboard</button>
       </Link>
     </div>

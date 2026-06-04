@@ -91,7 +91,7 @@ const Leaderboard = () => {
             </table>
           )}
         </div>
-        <Link to="/typing-speed-test/">
+        <Link to="/">
           <button className={`btn ${bootstrapClass}`} type="submit">
             Back
           </button>

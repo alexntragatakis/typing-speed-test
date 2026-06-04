@@ -180,7 +180,7 @@ const Options = () => {
             }
           />
         </div>
-        <Link to="/typing-speed-test/">
+        <Link to="/">
           <button className={`btn ${appStyle.bootstrapBtnClass}`} type="submit">
             Back
           </button>
