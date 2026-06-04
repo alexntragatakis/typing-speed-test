@@ -4,8 +4,7 @@ A typing speed test built with React and TypeScript designed to measure typing s
 
 ### Live Demo
 
-Check out the live version here: [https://alexntragatakis.github.io/typing-speed-test/](https://alexntragatakis.github.io/typing-speed-test/)
-**Note:** The live demo is currently frontend-only.
+Check out the live version here: [https://typing-speed-test-thhq.onrender.com](https://typing-speed-test-thhq.onrender.com)
 
 ### Features
 
