@@ -5,3 +5,12 @@
   text-align: center;
   gap: 25px;
 }
+
+.input-text {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid var(--boxbg);
+  background-color: var(--boxbg);
+  border-radius: 4px;
+  color: var(--correctly-typed-text);
+}

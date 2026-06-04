@@ -1,25 +1,30 @@
 import "./TextBox.css";
 import { useState, useEffect, useRef } from "react";
+import { useScores } from "../../hooks/useScores.ts";
 import generateText from "../../utils/generateText.ts";
-import type { rawResult } from "../../types/resultTypes.ts";
+import { calculateResults } from "../..//utils/calculateStats";
+import type { newScore } from "../../types/scoreTypes.ts";
 
 interface Props {
+  username: string;
   wordCount: number;
   restartSignal: number;
-  onFinished: (data: rawResult) => void;
+  onFinished: (data: newScore) => void;
 }
 
-const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
+const TextBox = ({ username, wordCount, restartSignal, onFinished }: Props) => {
   const [typed, setTyped] = useState("");
   const [wordList, setWordList] = useState(
-    generateText({ wordCount: wordCount })
+    generateText({ wordCount: wordCount }),
   );
+  const { submitScore } = useScores();
 
   const [started, setStarted] = useState(false);
   const [time, setTime] = useState(0);
   const timerRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
 
+  // Typing
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key.length === 1) {
       setTyped((typed) => typed + e.key);
@@ -29,6 +34,7 @@ const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
     }
   };
 
+  // Timer
   if (!started && typed.length > 0) {
     setStarted(true);
     if (startTimeRef.current === null) {
@@ -51,6 +57,7 @@ const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
     };
   }, [started]);
 
+  // Finish test
   useEffect(() => {
     if (typed.length >= wordList.length) {
       if (timerRef.current !== null) {
@@ -59,16 +66,24 @@ const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
       if (startTimeRef.current !== null) {
         const elapsedTime = Date.now() - startTimeRef.current;
         startTimeRef.current = null;
-        const result: rawResult = {
+
+        const result: newScore = calculateResults({
           time: elapsedTime,
-          typed: typed,
-          wordList: wordList,
-        };
+          typed,
+          wordList,
+          wordCount,
+        });
+        username === ""
+          ? (result.username = "Anonymous")
+          : (result.username = username);
+
+        submitScore(result);
         onFinished(result);
       }
     }
-  }, [typed, onFinished]);
+  }, [typed, submitScore, onFinished]);
 
+  // Restart test
   useEffect(() => {
     setStarted(false);
     setWordList(generateText({ wordCount: wordCount }));
@@ -82,6 +97,7 @@ const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
     }
   }, [restartSignal]);
 
+  // Render
   return (
     <div>
       Time: {time}s
@@ -115,7 +131,7 @@ const TextBox = ({ wordCount, restartSignal, onFinished }: Props) => {
               <span key={index} className={"back-text"}>
                 {char}
               </span>
-            )
+            ),
         )}
       </div>
     </div>

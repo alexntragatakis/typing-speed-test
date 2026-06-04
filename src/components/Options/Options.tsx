@@ -43,7 +43,7 @@ const Options = () => {
 
   const { testOptions, setTestOptions } = useTestOptionsContext();
   const changeWordCount = (count: number) => {
-    setTestOptions((prev) => ({ prev, wordCount: count }));
+    setTestOptions((prev) => ({ ...prev, wordCount: count }));
   };
 
   useEffect(() => {
@@ -53,11 +53,11 @@ const Options = () => {
     root.style.setProperty("--back-text", "var(" + appStyle.backColor + ")");
     root.style.setProperty(
       "--correctly-typed-text",
-      "var(" + appStyle.frontCorrColor + ")"
+      "var(" + appStyle.frontCorrColor + ")",
     );
     root.style.setProperty(
       "--incorrectly-typed-text",
-      "var(" + appStyle.frontIncColor + ")"
+      "var(" + appStyle.frontIncColor + ")",
     );
   }, [appStyle]);
 
@@ -168,6 +168,17 @@ const Options = () => {
               Dark
             </label>
           </div>
+        </div>
+        <div>
+          <div>Username:</div>
+          <input
+            type="text"
+            value={testOptions.username}
+            className="input-text"
+            onChange={(e) =>
+              setTestOptions((prev) => ({ ...prev, username: e.target.value }))
+            }
+          />
         </div>
         <Link to="/typing-speed-test/">
           <button className={`btn ${appStyle.bootstrapBtnClass}`} type="submit">

@@ -1,18 +1,21 @@
 # Typing Speed Test
-This front end web project is a typing speed test built with React and TypeScript designed to measure typing speed and accuracy. The application manages time-based state, user input events, and UI updates using modular, type-safe component architecture.
+
+A typing speed test built with React and TypeScript designed to measure typing speed and accuracy. The application manages time-based state, user input events, and UI updates using modular, type-safe component architecture. Results are persisted to a PostgreSQL database and displayed on a global leaderboard.
 
 ### Live Demo
-Check out the live verison here: [https://alexntragatakis.github.io/typing-speed-test/](https://alexntragatakis.github.io/typing-speed-test/)
+
+Check out the live version here: [https://alexntragatakis.github.io/typing-speed-test/](https://alexntragatakis.github.io/typing-speed-test/)
+**Note:** The live demo is currently frontend-only.
 
 ### Features
+
 - Randomized typing tests from a predefined word bank, producing a new sequence of words on each test restart
 - Per-character visual feedback by dynamically updating letter styles based on input accuracy against expected characters
 - Words per minute (WPM) and accuracy calculations, with WPM calculation depending on elapsed time and accuracy to avoid inflated results
-- Configurable word count test options
-- Selectable preset color themes using CSS runtime variables
+- Configurable word count test options and color themes
+- Score submission and global leaderboard with filtering by word count
 
 ### Tech Stack
-- Language: TypeScript
-- Framework: React
-- Styling: CSS
-- Build tool: Vite
+
+- **Frontend:** React, TypeScript, Vite, Bootstrap
+- **Backend:** Node.js, Express, Neon (PostgreSQL)

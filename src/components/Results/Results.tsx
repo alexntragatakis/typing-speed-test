@@ -1,15 +1,15 @@
 import "./Results.css";
-import type { processedResult } from "../../types/resultTypes";
+import type { newScore } from "../../types/scoreTypes";
 
 interface Props {
-  result: processedResult;
+  result: newScore;
 }
 
 const Results = ({ result }: Props) => {
   return (
     <div className="results-page-wrap">
       <div className="results">
-        {result.WPM} WPM {result.accuracy}% Accuracy
+        {result.wpm} WPM {result.accuracy}% Accuracy
       </div>
     </div>
   );

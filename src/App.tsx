@@ -3,9 +3,8 @@ import "./styles/App.css";
 import TextBox from "./components/TextBox/TextBox";
 import Results from "./components/Results/Results";
 import ControlBar from "./components/ControlBar/ControlBar";
-import { calculateResults } from "./utils/calculateStats";
 import { useTestOptionsContext } from "./context/TestOptionsContext";
-import type { rawResult } from "./types/resultTypes.ts";
+import type { newScore } from "./types/scoreTypes.ts";
 
 function App() {
   const { testOptions } = useTestOptionsContext();
@@ -13,15 +12,15 @@ function App() {
   const [restartSignal, setRestartSignal] = useState(0);
 
   const [showResults, setDisplayResults] = useState(false);
-  const [rawResults, setRawResults] = useState<rawResult | null>(null);
+  const [score, setScore] = useState<newScore | null>(null);
 
-  const handleFinished = (raw: rawResult) => {
-    setRawResults(raw);
+  const handleFinished = (score: newScore) => {
+    setScore(score);
     setDisplayResults(true);
   };
 
   const handleRestart = () => {
-    setRawResults(null);
+    setScore(null);
     setDisplayResults(false);
     setRestartSignal((n) => n + 1);
   };
@@ -33,12 +32,13 @@ function App() {
         <div className="content">
           {!showResults ? (
             <TextBox
+              username={testOptions.username || "Anonymous"}
               wordCount={testOptions.wordCount}
               restartSignal={restartSignal}
               onFinished={handleFinished}
             ></TextBox>
           ) : (
-            <Results result={calculateResults(rawResults!)}></Results>
+            <Results result={score!}></Results>
           )}
         </div>
         <div className="bottom-row">

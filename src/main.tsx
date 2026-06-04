@@ -7,6 +7,7 @@ import "./styles/variables.css";
 
 import App from "./App.tsx";
 import Options from "./components/Options/Options.tsx";
+import Leaderboard from "./components/Leaderboard/Leaderboard.tsx";
 
 import { TestOptionsContext } from "./context/TestOptionsContext.ts";
 
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/typing-speed-test/options",
     element: <Options />,
+  },
+  {
+    path: "/typing-speed-test/leaderboard",
+    element: <Leaderboard />,
   },
 ]);
 
@@ -34,5 +39,5 @@ const Root = () => {
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Root />
-  </StrictMode>
+  </StrictMode>,
 );
