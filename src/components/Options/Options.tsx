@@ -11,6 +11,7 @@ const Options = () => {
     backColor: "--default-back-text",
     frontCorrColor: "--default-correctly-typed-text",
     frontIncColor: "--default-incorrectly-typed-text",
+    overlayBg: "--default-overlay-bg",
     bootstrapBtnClass: "btn-outline-secondary",
   };
 
@@ -20,6 +21,7 @@ const Options = () => {
     backColor: "--light-back-text",
     frontCorrColor: "--light-correctly-typed-text",
     frontIncColor: "--light-incorrectly-typed-text",
+    overlayBg: "--light-overlay-bg",
     bootstrapBtnClass: "btn-outline-dark",
   };
 
@@ -29,6 +31,7 @@ const Options = () => {
     backColor: "--dark-back-text",
     frontCorrColor: "--dark-correctly-typed-text",
     frontIncColor: "--dark-incorrectly-typed-text",
+    overlayBg: "--dark-overlay-bg",
     bootstrapBtnClass: "btn-outline-light",
   };
 
@@ -59,6 +62,7 @@ const Options = () => {
       "--incorrectly-typed-text",
       "var(" + appStyle.frontIncColor + ")",
     );
+    root.style.setProperty("--overlay-bg", "var(" + appStyle.overlayBg + ")");
   }, [appStyle]);
 
   return (

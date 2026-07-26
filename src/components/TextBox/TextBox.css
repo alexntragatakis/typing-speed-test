@@ -1,4 +1,5 @@
 .textbox-wrap {
+  position: relative;
   width: 1200px;
   height: 250px;
   background: var(--boxbg);
@@ -7,6 +8,21 @@
   outline: none;
   padding: 16px;
   font-size: 30px;
+}
+
+.focus-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--correctly-typed-text);
+  background: var(--overlay-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .back-text {

@@ -17,12 +17,13 @@ const TextBox = ({ username, wordCount, restartSignal, onFinished }: Props) => {
   const [wordList, setWordList] = useState(
     generateText({ wordCount: wordCount }),
   );
-  const { submitScore } = useScores();
-
+  const [isFocused, setIsFocused] = useState(false);
   const [started, setStarted] = useState(false);
   const [time, setTime] = useState(0);
+  const { submitScore } = useScores();
   const timerRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
+  const wrapRef = useRef<HTMLDivElement | null>(null);
 
   // Typing
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -101,7 +102,22 @@ const TextBox = ({ username, wordCount, restartSignal, onFinished }: Props) => {
   return (
     <div>
       Time: {time}s
-      <div className="textbox-wrap" tabIndex={0} onKeyDown={handleKeyDown}>
+      <div
+        ref={wrapRef}
+        className="textbox-wrap"
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+      >
+        {!isFocused && (
+          <div
+            className="focus-overlay"
+            onClick={() => wrapRef.current?.focus()}
+          >
+            Click to focus
+          </div>
+        )}
         {typed.split("").map((_, index) => {
           if (typed[index] !== " " && wordList[index] === " ") {
             return (
