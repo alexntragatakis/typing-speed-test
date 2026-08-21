@@ -1,16 +1,28 @@
 import { useState, useEffect, useCallback } from "react";
 import type { newScore, Score } from "../types/scoreTypes";
 
+export const WORD_COUNTS = [10, 25, 50] as const;
+export type WordCount = (typeof WORD_COUNTS)[number];
+export type ScoresByWordCount = Record<WordCount, Score[]>;
+
+const EMPTY_SCORES: ScoresByWordCount = { 10: [], 25: [], 50: [] };
+
 export function useScores() {
-  const [scores, setScores] = useState<Score[]>([]);
+  const [scoresByWordCount, setScoresByWordCount] =
+    useState<ScoresByWordCount>(EMPTY_SCORES);
   const [loading, setLoading] = useState(false);
 
   const fetchScores = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/scores");
-      const data = await res.json();
-      setScores(data);
+      const entries = await Promise.all(
+        WORD_COUNTS.map(async (wordCount) => {
+          const res = await fetch(`/api/scores?wordCount=${wordCount}`);
+          const data = await res.json();
+          return [wordCount, data] as const;
+        }),
+      );
+      setScoresByWordCount(Object.fromEntries(entries) as ScoresByWordCount);
     } finally {
       setLoading(false);
     }
@@ -32,5 +44,5 @@ export function useScores() {
     [fetchScores],
   );
 
-  return { scores, loading, submitScore, fetchScores };
+  return { scoresByWordCount, loading, submitScore, fetchScores };
 }

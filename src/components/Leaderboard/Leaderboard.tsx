@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useScores } from "../../hooks/useScores";
+import { useScores, WORD_COUNTS } from "../../hooks/useScores";
+import type { WordCount } from "../../hooks/useScores";
 import type { Score } from "../../types/scoreTypes";
 import "./Leaderboard.css";
-
-type WordCountFilter = 10 | 25 | 50;
 
 const Leaderboard = () => {
   const [bootstrapClass, setBootstrapClass] = useState<string>(
@@ -24,13 +23,10 @@ const Leaderboard = () => {
     }
   }, []);
 
-  const { scores, loading } = useScores();
-  const [filter, setFilter] = useState<WordCountFilter>(50);
+  const { scoresByWordCount, loading } = useScores();
+  const [filter, setFilter] = useState<WordCount>(50);
 
-  const filtered = scores
-    .filter((s: Score) => s.wordCount === filter)
-    .sort((a: Score, b: Score) => b.wpm - a.wpm)
-    .slice(0, 50);
+  const filtered = scoresByWordCount[filter];
 
   const formatDate = (date: Date) => {
     return new Date(date).toLocaleDateString("en-US", {
@@ -45,7 +41,7 @@ const Leaderboard = () => {
       <h1>Leaderboard</h1>
       <div className="leaderboard-page-wrap">
         <div className="leaderboard-filters">
-          {([10, 25, 50] as WordCountFilter[]).map((count) => (
+          {WORD_COUNTS.map((count) => (
             <button
               key={count}
               className={`btn ${filter === count ? bootstrapClass.replace("outline-", "") : bootstrapClass}`}

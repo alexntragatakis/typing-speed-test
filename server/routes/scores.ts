@@ -3,12 +3,20 @@ import sql from "../db";
 
 const router = Router();
 
-// GET /api/scores — top 50 leaderboard
-router.get("/", async (_req: Request, res: Response) => {
+// GET /api/scores?wordCount=10|25|50 — top 50 leaderboard for a word count setting
+router.get("/", async (req: Request, res: Response) => {
+  const wordCount = Number(req.query.wordCount);
+
+  if (![10, 25, 50].includes(wordCount)) {
+    res.status(400).json({ error: "Invalid wordCount" });
+    return;
+  }
+
   try {
     const rows = await sql`
       SELECT id, username, wpm, accuracy, word_count, created_at
       FROM scores
+      WHERE word_count = ${wordCount}
       ORDER BY wpm DESC
       LIMIT 50
     `;

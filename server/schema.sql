@@ -7,4 +7,6 @@ CREATE TABLE IF NOT EXISTS scores (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX IF NOT EXISTS idx_scores_wpm ON scores (wpm DESC);
+CREATE INDEX IF NOT EXISTS idx_scores_wpm_10 ON scores (wpm DESC) WHERE word_count = 10;
+CREATE INDEX IF NOT EXISTS idx_scores_wpm_25 ON scores (wpm DESC) WHERE word_count = 25;
+CREATE INDEX IF NOT EXISTS idx_scores_wpm_50 ON scores (wpm DESC) WHERE word_count = 50;
